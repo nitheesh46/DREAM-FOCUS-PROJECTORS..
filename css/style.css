@@ -1,0 +1,130 @@
+/* Custom Premium Luxury Stylesheet for Dream Focus Projectors */
+
+:root {
+  --luxury-gold: #f59e0b;
+  --dark-glass: rgba(15, 23, 42, 0.6);
+  --border-glow: rgba(255, 255, 255, 0.06);
+}
+
+/* Fluid Luxury Space Gradient Engine */
+.luxury-matrix-space {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle at 12% 15%, rgba(59, 130, 246, 0.08) 0%, transparent 45%),
+              radial-gradient(circle at 88% 82%, rgba(245, 158, 11, 0.06) 0%, transparent 50%);
+}
+
+/* Glassmorphic Panel Textures */
+.glass-panel {
+  background: var(--dark-glass);
+  backdrop-filter: blur(24px);
+  border: 1px solid var(--border-glow);
+  box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.7);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-panel:hover {
+  border-color: rgba(245, 158, 11, 0.3);
+  transform: translateY(-4px);
+}
+
+.badge {
+  background: rgba(245, 158, 11, 0.05);
+  color: #f59e0b;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: inline-block;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.tag {
+  position: absolute;
+  top: 0.875rem;
+  left: 0.875rem;
+  background: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #f59e0b;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.inquire-btn {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+.inquire-btn:hover {
+  background: #16a34a;
+  border-color: transparent;
+}
+
+.video-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  background-color: #020617;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+}
+
+.form-input {
+  width: 100%;
+  background-color: rgba(2, 6, 23, 0.8);
+  border: 1px solid rgba(51, 65, 85, 0.7);
+  border-radius: 0.875rem;
+  padding: 0.85rem;
+  color: white;
+  transition: all 0.3s ease;
+}
+.form-input:focus {
+  border-color: var(--luxury-gold);
+  outline: none;
+}
+
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+  color: #020617;
+  padding: 1rem;
+  border-radius: 0.875rem;
+  box-shadow: 0 8px 25px -6px rgba(245, 158, 11, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  font-weight: 900;
+}
+.submit-btn:hover {
+  box-shadow: 0 14px 28px -4px rgba(245, 158, 11, 0.5);
+}
+
+@media (max-width: 640px) {
+  .glass-panel:hover {
+    transform: none;
+  }
+}

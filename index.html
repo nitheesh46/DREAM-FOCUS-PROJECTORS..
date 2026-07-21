@@ -29,14 +29,88 @@
 
     <!-- Custom Visual Effects & Animations Style Block -->
     <style>
+        /* 1. MOVING NEWS TICKER ANIMATION */
+        @keyframes marqueeScroll {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .ticker-move {
+            display: inline-flex;
+            white-space: nowrap;
+            animation: marqueeScroll 22s linear infinite;
+        }
+
+        .ticker-move:hover {
+            animation-play-state: paused;
+        }
+
+        .ticker-item {
+            display: inline-flex;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+
+        /* 2. PROJECTOR LIGHT BEAM ANIMATION */
+        @keyframes projectorBeamSweep {
+            0%, 100% {
+                opacity: 0.3;
+                transform: translateX(-50%) rotate(-4deg) scaleX(0.95);
+            }
+            50% {
+                opacity: 0.65;
+                transform: translateX(-50%) rotate(4deg) scaleX(1.1);
+            }
+        }
+
+        .projector-beam {
+            position: absolute;
+            top: -120px;
+            left: 50%;
+            width: 450px;
+            height: 500px;
+            background: conic-gradient(from 180deg at 50% 0%, rgba(245, 158, 11, 0.45) 0deg, rgba(245, 158, 11, 0) 55deg, rgba(245, 158, 11, 0) 305deg, rgba(245, 158, 11, 0.45) 360deg);
+            filter: blur(28px);
+            pointer-events: none;
+            z-index: 1;
+            transform-origin: top center;
+            animation: projectorBeamSweep 4.5s ease-in-out infinite;
+        }
+
+        /* 3. MOVING TEXT METALLIC LASER SHINE FOR DREAM FOCUS PROJECTORS */
+        @keyframes textShine {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .moving-title-effect {
+            background: linear-gradient(
+                120deg, 
+                #ffffff 0%, 
+                #ffffff 25%, 
+                #f59e0b 45%, 
+                #fef08a 50%, 
+                #f59e0b 55%, 
+                #ffffff 75%, 
+                #ffffff 100%
+            );
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: textShine 3.5s linear infinite;
+        }
+
+        /* 4. CARD & UTILITY ANIMATIONS */
         @keyframes pulseGlow {
             0%, 100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.4); }
             50% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.8); }
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
         }
 
         @keyframes floatSlow {
@@ -44,26 +118,8 @@
             50% { transform: translateY(-8px); }
         }
 
-        @keyframes badgeShimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        .pulse-glow {
-            animation: pulseGlow 2.5s infinite;
-        }
-
-        .float-element {
-            animation: floatSlow 4s ease-in-out infinite;
-        }
-
-        .shimmer-text {
-            background: linear-gradient(90deg, #f59e0b 0%, #ffffff 50%, #f59e0b 100%);
-            background-size: 200% auto;
-            color: transparent;
-            -webkit-background-clip: text;
-            animation: badgeShimmer 3s linear infinite;
-        }
+        .pulse-glow { animation: pulseGlow 2.5s infinite; }
+        .float-element { animation: floatSlow 4s ease-in-out infinite; }
 
         .glass-card {
             background: rgba(15, 23, 42, 0.75);
@@ -78,36 +134,57 @@
             transform: translateY(-6px);
             box-shadow: 0 20px 30px -10px rgba(245, 158, 11, 0.15);
         }
-
-        .ribbon-badge {
-            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
-        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased scroll-smooth selection:bg-amber-500 selection:text-slate-950">
 
     <!-- ==========================================
-         TOP TICKER: SPECIAL OFFER ALERT BANNER
+         TOP NEWS TICKER: CONTINUOUS MOVING OFFERS
          ========================================== -->
-    <div id="offerBanner" class="bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-slate-950 font-bold text-xs sm:text-sm py-2 px-4 shadow-lg sticky top-0 z-50 flex items-center justify-between border-b border-amber-400/30">
-        <div class="flex items-center space-x-2 container mx-auto justify-center text-center">
-            <span class="bg-slate-950 text-amber-400 px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-wider animate-pulse">
-                🔥 Madurai Mega Offer
-            </span>
-            <span class="hidden sm:inline">Get up to <strong class="underline">20% OFF</strong> on Selected Pre-Owned Projectors + Free High-Speed HDMI Cable!</span>
-            <span class="sm:hidden">Special Deal: Pre-Owned Projectors Starting at ₹4,000!</span>
-            <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS,%20I%20want%20to%20claim%20the%20Special%20Offer!" target="_blank" class="bg-slate-950 hover:bg-slate-900 text-amber-400 hover:text-white px-3 py-1 rounded-lg text-xs font-bold transition-all ml-2 shadow-md flex items-center gap-1">
-                <span>Claim Deal</span>
-                <i class="fas fa-arrow-right text-[10px]"></i>
-            </a>
+    <div class="bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-slate-950 font-bold text-xs sm:text-sm py-2 shadow-lg sticky top-0 z-50 border-b border-amber-400/30">
+        <div class="ticker-wrap flex items-center">
+            <!-- Ticker Group duplicated twice for seamless infinite loop -->
+            <div class="ticker-move">
+                <div class="ticker-item">
+                    <span class="bg-slate-950 text-amber-400 px-2 py-0.5 rounded-full text-[10px] uppercase font-black mr-2">🔥 MADURAI OFFER</span>
+                    Up to 20% OFF on Pre-Owned Projectors!
+                </div>
+                <div class="ticker-item">
+                    <span class="bg-slate-950 text-emerald-400 px-2 py-0.5 rounded-full text-[10px] uppercase font-black mr-2">🎁 FREE GIFT</span>
+                    Genuine Remote + Power Cable Included with Every Purchase!
+                </div>
+                <div class="ticker-item">
+                    <span class="bg-slate-950 text-amber-400 px-2 py-0.5 rounded-full text-[10px] uppercase font-black mr-2">🛠️ REPAIR SPECIAL</span>
+                    Free Diagnostic Checkup on All Projectors!
+                </div>
+                <div class="ticker-item">
+                    <span class="bg-slate-950 text-white px-2 py-0.5 rounded-full text-[10px] uppercase font-black mr-2">📞 CONTACT</span>
+                    Call / WhatsApp: +91 85085 50847
+                </div>
+
+                <!-- Duplicate for Loop -->
+                <div class="ticker-item">
+                    <span class="bg-slate-950 text-amber-400 px-2 py-0.5 rounded-full text-[10px] uppercase font-black mr-2">🔥 MADURAI OFFER</span>
+                    Up to 20% OFF on Pre-Owned Projectors!
+                </div>
+                <div class="ticker-item">
+                    <span class="bg-slate-950 text-emerald-400 px-2 py-0.5 rounded-full text-[10px] uppercase font-black mr-2">🎁 FREE GIFT</span>
+                    Genuine Remote + Power Cable Included with Every Purchase!
+                </div>
+                <div class="ticker-item">
+                    <span class="bg-slate-950 text-amber-400 px-2 py-0.5 rounded-full text-[10px] uppercase font-black mr-2">🛠️ REPAIR SPECIAL</span>
+                    Free Diagnostic Checkup on All Projectors!
+                </div>
+                <div class="ticker-item">
+                    <span class="bg-slate-950 text-white px-2 py-0.5 rounded-full text-[10px] uppercase font-black mr-2">📞 CONTACT</span>
+                    Call / WhatsApp: +91 85085 50847
+                </div>
+            </div>
         </div>
-        <button onclick="document.getElementById('offerBanner').style.display='none'" class="text-slate-950 hover:text-slate-800 ml-4 focus:outline-none">
-            <i class="fas fa-times text-sm"></i>
-        </button>
     </div>
 
     <!-- Header Navigation Hub -->
-    <header class="sticky top-[37px] z-40 bg-slate-900/90 backdrop-blur-md text-white shadow-md border-b border-slate-800 transition-all">
+    <header class="sticky top-[33px] z-40 bg-slate-900/90 backdrop-blur-md text-white shadow-md border-b border-slate-800 transition-all">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <a href="#" class="flex items-center space-x-2 group">
                 <div class="bg-amber-500 text-slate-950 p-2 rounded-lg font-black text-xl tracking-wider group-hover:scale-105 transition-transform shadow-lg shadow-amber-500/20">DFP</div>
@@ -131,6 +208,9 @@
 
     <!-- Main Billboard Hero Grid -->
     <section class="hero-gradient text-white py-24 px-4 relative overflow-hidden border-b border-slate-800">
+        <!-- ANIMATED PROJECTOR LIGHT BEAM EFFECT -->
+        <div class="projector-beam"></div>
+
         <!-- Glowing Background Accents -->
         <div class="absolute -top-24 -left-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -138,12 +218,13 @@
         <div class="container mx-auto max-w-5xl text-center relative z-10">
             <!-- Animated Badge -->
             <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 px-4 py-1.5 rounded-full mb-6 float-element">
-                <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
                 <span class="text-amber-400 text-xs font-bold uppercase tracking-wider">#1 Sales & Service Expert in Madurai</span>
             </div>
 
-            <h1 class="text-5xl sm:text-7xl font-black tracking-tight mb-4 text-white drop-shadow-md">
-                DREAM FOCUS <span class="shimmer-text">PROJECTORS</span>
+            <!-- MOVING TITLE TEXT EFFECT -->
+            <h1 class="text-5xl sm:text-7xl font-black tracking-tight mb-4 drop-shadow-lg">
+                <span class="moving-title-effect">DREAM FOCUS PROJECTORS</span>
             </h1>
             
             <p class="text-xl sm:text-2xl text-slate-300 max-w-2xl mx-auto font-medium mb-2 leading-relaxed">
@@ -204,7 +285,6 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Product Card 1 -->
                 <div class="glass-card rounded-2xl overflow-hidden flex flex-col relative group">
-                    <!-- Offer Badge Ribbon -->
                     <div class="absolute top-3 right-3 z-20 bg-amber-500 text-slate-950 font-black text-xs px-3 py-1 rounded-full shadow-lg flex items-center gap-1 animate-bounce">
                         <i class="fas fa-fire"></i> HOT DEAL
                     </div>
@@ -219,7 +299,6 @@
                         <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">Office & Classroom Models</h3>
                         <p class="text-sm text-slate-400 mb-4 flex-1">High clarity models optimized for bright viewing areas, presentations, and institutional lecturing.</p>
                         
-                        <!-- Offer Tag -->
                         <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-2.5 mb-6 text-xs text-amber-300 flex items-center gap-2">
                             <i class="fas fa-gift text-amber-400"></i>
                             <span>Includes Free Remote + Power Cable</span>
@@ -242,7 +321,6 @@
 
                 <!-- Product Card 2 -->
                 <div class="glass-card rounded-2xl overflow-hidden flex flex-col relative group">
-                    <!-- Offer Badge Ribbon -->
                     <div class="absolute top-3 right-3 z-20 bg-emerald-500 text-slate-950 font-black text-xs px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
                         <i class="fas fa-star"></i> POPULAR CHOICE
                     </div>
@@ -257,7 +335,6 @@
                         <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">Premium Home Cinema</h3>
                         <p class="text-sm text-slate-400 mb-4 flex-1">Enhanced dynamic contrasts configurations meant for home theaters, movies, and high-fidelity video playbacks.</p>
                         
-                        <!-- Offer Tag -->
                         <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-2.5 mb-6 text-xs text-amber-300 flex items-center gap-2">
                             <i class="fas fa-truck text-amber-400"></i>
                             <span>Free Testing & Setup Assistance</span>
@@ -280,7 +357,6 @@
 
                 <!-- Product Card 3 -->
                 <div class="glass-card rounded-2xl overflow-hidden flex flex-col relative group">
-                    <!-- Offer Badge Ribbon -->
                     <div class="absolute top-3 right-3 z-20 bg-indigo-500 text-white font-black text-xs px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
                         <i class="fas fa-bolt"></i> HIGH LUMENS
                     </div>
@@ -295,7 +371,6 @@
                         <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">High-Lumen Venues</h3>
                         <p class="text-sm text-slate-400 mb-4 flex-1">Heavy duty multi-hour workhorses built cleanly for wedding halls, event spaces, and massive boardrooms.</p>
                         
-                        <!-- Offer Tag -->
                         <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-2.5 mb-6 text-xs text-amber-300 flex items-center gap-2">
                             <i class="fas fa-shield-alt text-amber-400"></i>
                             <span>Extended Service Support Warranty</span>
@@ -335,7 +410,6 @@
             </div>
 
             <div class="bg-slate-900 rounded-2xl p-8 border border-slate-800 shadow-2xl relative overflow-hidden">
-                <!-- Service Offer Alert Callout -->
                 <div class="bg-gradient-to-r from-amber-500/20 to-amber-600/10 border border-amber-500/30 p-3 rounded-xl mb-6 flex items-center space-x-3">
                     <div class="bg-amber-500 text-slate-950 p-2 rounded-lg font-bold">
                         <i class="fas fa-wrench"></i>

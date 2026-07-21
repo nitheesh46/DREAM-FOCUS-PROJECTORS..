@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="overflow-x-hidden">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>DREAM FOCUS PROJECTORS - Madurai</title>
     
     <!-- ==========================================
@@ -27,8 +27,13 @@
     <!-- Main Style Accents Configuration Linkage -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Custom Visual Effects & Animations Style Block -->
+    <!-- Mobile First Visual Effects & Styles -->
     <style>
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
         /* 1. MOVING NEWS TICKER ANIMATION */
         @keyframes marqueeScroll {
             0% { transform: translateX(0%); }
@@ -44,7 +49,7 @@
         .ticker-move {
             display: inline-flex;
             white-space: nowrap;
-            animation: marqueeScroll 22s linear infinite;
+            animation: marqueeScroll 18s linear infinite;
         }
 
         .ticker-move:hover {
@@ -54,36 +59,53 @@
         .ticker-item {
             display: inline-flex;
             align-items: center;
-            padding: 0 1.5rem;
+            padding: 0 1rem;
+            font-size: 0.75rem;
         }
 
-        /* 2. PROJECTOR LIGHT BEAM ANIMATION */
+        @media (min-width: 640px) {
+            .ticker-item {
+                padding: 0 1.5rem;
+                font-size: 0.875rem;
+            }
+        }
+
+        /* 2. RESPONSIVE PROJECTOR LIGHT BEAM ANIMATION */
         @keyframes projectorBeamSweep {
             0%, 100% {
-                opacity: 0.3;
-                transform: translateX(-50%) rotate(-4deg) scaleX(0.95);
+                opacity: 0.25;
+                transform: translateX(-50%) rotate(-3deg) scaleX(0.9);
             }
             50% {
-                opacity: 0.65;
-                transform: translateX(-50%) rotate(4deg) scaleX(1.1);
+                opacity: 0.55;
+                transform: translateX(-50%) rotate(3deg) scaleX(1.05);
             }
         }
 
         .projector-beam {
             position: absolute;
-            top: -120px;
+            top: -80px;
             left: 50%;
-            width: 450px;
-            height: 500px;
-            background: conic-gradient(from 180deg at 50% 0%, rgba(245, 158, 11, 0.45) 0deg, rgba(245, 158, 11, 0) 55deg, rgba(245, 158, 11, 0) 305deg, rgba(245, 158, 11, 0.45) 360deg);
-            filter: blur(28px);
+            width: 280px;
+            height: 360px;
+            background: conic-gradient(from 180deg at 50% 0%, rgba(245, 158, 11, 0.45) 0deg, rgba(245, 158, 11, 0) 50deg, rgba(245, 158, 11, 0) 310deg, rgba(245, 158, 11, 0.45) 360deg);
+            filter: blur(20px);
             pointer-events: none;
             z-index: 1;
             transform-origin: top center;
             animation: projectorBeamSweep 4.5s ease-in-out infinite;
         }
 
-        /* 3. MOVING TEXT METALLIC LASER SHINE FOR DREAM FOCUS PROJECTORS */
+        @media (min-width: 768px) {
+            .projector-beam {
+                top: -120px;
+                width: 480px;
+                height: 500px;
+                filter: blur(28px);
+            }
+        }
+
+        /* 3. MOVING TEXT SHINE FOR TITLE */
         @keyframes textShine {
             0% { background-position: -200% center; }
             100% { background-position: 200% center; }
@@ -93,11 +115,11 @@
             background: linear-gradient(
                 120deg, 
                 #ffffff 0%, 
-                #ffffff 25%, 
+                #ffffff 20%, 
                 #f59e0b 45%, 
                 #fef08a 50%, 
                 #f59e0b 55%, 
-                #ffffff 75%, 
+                #ffffff 80%, 
                 #ffffff 100%
             );
             background-size: 200% auto;
@@ -107,76 +129,71 @@
             animation: textShine 3.5s linear infinite;
         }
 
-        /* 4. CARD & UTILITY ANIMATIONS */
+        /* 4. UTILITIES */
         @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.4); }
-            50% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.8); }
-        }
-
-        @keyframes floatSlow {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
+            0%, 100% { box-shadow: 0 0 12px rgba(245, 158, 11, 0.4); }
+            50% { box-shadow: 0 0 24px rgba(245, 158, 11, 0.8); }
         }
 
         .pulse-glow { animation: pulseGlow 2.5s infinite; }
-        .float-element { animation: floatSlow 4s ease-in-out infinite; }
 
         .glass-card {
-            background: rgba(15, 23, 42, 0.75);
+            background: rgba(15, 23, 42, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .glass-card:hover {
-            border-color: rgba(245, 158, 11, 0.5);
-            transform: translateY(-6px);
-            box-shadow: 0 20px 30px -10px rgba(245, 158, 11, 0.15);
+        @media (min-width: 768px) {
+            .glass-card:hover {
+                border-color: rgba(245, 158, 11, 0.5);
+                transform: translateY(-4px);
+                box-shadow: 0 16px 24px -8px rgba(245, 158, 11, 0.15);
+            }
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased scroll-smooth selection:bg-amber-500 selection:text-slate-950">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased scroll-smooth selection:bg-amber-500 selection:text-slate-950 overflow-x-hidden">
 
     <!-- ==========================================
          TOP NEWS TICKER: CONTINUOUS MOVING OFFERS
          ========================================== -->
-    <div class="bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-slate-950 font-bold text-xs sm:text-sm py-2 shadow-lg sticky top-0 z-50 border-b border-amber-400/30">
+    <div class="bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-slate-950 font-bold py-1.5 shadow-md border-b border-amber-400/30">
         <div class="ticker-wrap flex items-center">
-            <!-- Ticker Group duplicated twice for seamless infinite loop -->
             <div class="ticker-move">
                 <div class="ticker-item">
-                    <span class="bg-slate-950 text-amber-400 px-2 py-0.5 rounded-full text-[10px] uppercase font-black mr-2">🔥 MADURAI OFFER</span>
+                    <span class="bg-slate-950 text-amber-400 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] uppercase font-black mr-2">🔥 MADURAI OFFER</span>
                     Up to 20% OFF on Pre-Owned Projectors!
                 </div>
                 <div class="ticker-item">
-                    <span class="bg-slate-950 text-emerald-400 px-2 py-0.5 rounded-full text-[10px] uppercase font-black mr-2">🎁 FREE GIFT</span>
-                    Genuine Remote + Power Cable Included with Every Purchase!
+                    <span class="bg-slate-950 text-emerald-400 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] uppercase font-black mr-2">🎁 FREE GIFT</span>
+                    Genuine Remote + Power Cable Included!
                 </div>
                 <div class="ticker-item">
-                    <span class="bg-slate-950 text-amber-400 px-2 py-0.5 rounded-full text-[10px] uppercase font-black mr-2">🛠️ REPAIR SPECIAL</span>
+                    <span class="bg-slate-950 text-amber-400 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] uppercase font-black mr-2">🛠️ REPAIR SPECIAL</span>
                     Free Diagnostic Checkup on All Projectors!
                 </div>
                 <div class="ticker-item">
-                    <span class="bg-slate-950 text-white px-2 py-0.5 rounded-full text-[10px] uppercase font-black mr-2">📞 CONTACT</span>
+                    <span class="bg-slate-950 text-white px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] uppercase font-black mr-2">📞 CONTACT</span>
                     Call / WhatsApp: +91 85085 50847
                 </div>
 
-                <!-- Duplicate for Loop -->
+                <!-- Duplicate for Smooth Loop -->
                 <div class="ticker-item">
-                    <span class="bg-slate-950 text-amber-400 px-2 py-0.5 rounded-full text-[10px] uppercase font-black mr-2">🔥 MADURAI OFFER</span>
+                    <span class="bg-slate-950 text-amber-400 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] uppercase font-black mr-2">🔥 MADURAI OFFER</span>
                     Up to 20% OFF on Pre-Owned Projectors!
                 </div>
                 <div class="ticker-item">
-                    <span class="bg-slate-950 text-emerald-400 px-2 py-0.5 rounded-full text-[10px] uppercase font-black mr-2">🎁 FREE GIFT</span>
-                    Genuine Remote + Power Cable Included with Every Purchase!
+                    <span class="bg-slate-950 text-emerald-400 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] uppercase font-black mr-2">🎁 FREE GIFT</span>
+                    Genuine Remote + Power Cable Included!
                 </div>
                 <div class="ticker-item">
-                    <span class="bg-slate-950 text-amber-400 px-2 py-0.5 rounded-full text-[10px] uppercase font-black mr-2">🛠️ REPAIR SPECIAL</span>
+                    <span class="bg-slate-950 text-amber-400 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] uppercase font-black mr-2">🛠️ REPAIR SPECIAL</span>
                     Free Diagnostic Checkup on All Projectors!
                 </div>
                 <div class="ticker-item">
-                    <span class="bg-slate-950 text-white px-2 py-0.5 rounded-full text-[10px] uppercase font-black mr-2">📞 CONTACT</span>
+                    <span class="bg-slate-950 text-white px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] uppercase font-black mr-2">📞 CONTACT</span>
                     Call / WhatsApp: +91 85085 50847
                 </div>
             </div>
@@ -184,13 +201,13 @@
     </div>
 
     <!-- Header Navigation Hub -->
-    <header class="sticky top-[33px] z-40 bg-slate-900/90 backdrop-blur-md text-white shadow-md border-b border-slate-800 transition-all">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="#" class="flex items-center space-x-2 group">
-                <div class="bg-amber-500 text-slate-950 p-2 rounded-lg font-black text-xl tracking-wider group-hover:scale-105 transition-transform shadow-lg shadow-amber-500/20">DFP</div>
+    <header class="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md text-white shadow-md border-b border-slate-800">
+        <div class="container mx-auto px-3 sm:px-4 py-2.5 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <div class="bg-amber-500 text-slate-950 px-2 py-1 rounded-lg font-black text-lg tracking-wider shadow-md shadow-amber-500/20">DFP</div>
                 <div>
-                    <span class="font-bold text-lg block leading-none text-amber-400 group-hover:text-amber-300 transition-colors">DREAM FOCUS</span>
-                    <span class="text-xs text-slate-400 tracking-widest uppercase">Projectors</span>
+                    <span class="font-bold text-base sm:text-lg block leading-none text-amber-400">DREAM FOCUS</span>
+                    <span class="text-[10px] sm:text-xs text-slate-400 tracking-widest uppercase">Projectors</span>
                 </div>
             </a>
             <nav class="hidden md:flex space-x-8 font-medium">
@@ -199,193 +216,192 @@
                 <a href="#services" class="nav-link hover:text-amber-400 transition-colors">Services & Repair</a>
                 <a href="#contact" class="nav-link hover:text-amber-400 transition-colors">Contact</a>
             </nav>
-            <a href="https://wa.me/918508550847" target="_blank" class="whatsapp-btn bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2 rounded-xl flex items-center space-x-2 shadow-lg shadow-emerald-600/30 transition-all hover:scale-105">
-                <i class="fab fa-whatsapp text-lg"></i>
-                <span class="hidden sm:inline">Chat Now</span>
+            <a href="https://wa.me/918508550847" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm flex items-center space-x-1.5 shadow-md shadow-emerald-600/30">
+                <i class="fab fa-whatsapp text-sm sm:text-lg"></i>
+                <span>Chat Now</span>
             </a>
         </div>
     </header>
 
-    <!-- Main Billboard Hero Grid -->
-    <section class="hero-gradient text-white py-24 px-4 relative overflow-hidden border-b border-slate-800">
+    <!-- Main Hero Billboard -->
+    <section class="hero-gradient text-white py-12 sm:py-20 px-4 relative overflow-hidden border-b border-slate-800">
         <!-- ANIMATED PROJECTOR LIGHT BEAM EFFECT -->
         <div class="projector-beam"></div>
 
-        <!-- Glowing Background Accents -->
-        <div class="absolute -top-24 -left-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <!-- Glowing Accent Backgrounds -->
+        <div class="absolute -top-12 -left-12 w-48 h-48 sm:w-96 sm:h-96 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="absolute -bottom-12 -right-12 w-48 h-48 sm:w-96 sm:h-96 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
 
         <div class="container mx-auto max-w-5xl text-center relative z-10">
-            <!-- Animated Badge -->
-            <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 px-4 py-1.5 rounded-full mb-6 float-element">
-                <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
-                <span class="text-amber-400 text-xs font-bold uppercase tracking-wider">#1 Sales & Service Expert in Madurai</span>
+            <!-- Animated Top Badge -->
+            <div class="inline-flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 px-3 py-1 rounded-full mb-4">
+                <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                <span class="text-amber-400 text-[10px] sm:text-xs font-bold uppercase tracking-wider">#1 Sales & Service in Madurai</span>
             </div>
 
-            <!-- MOVING TITLE TEXT EFFECT -->
-            <h1 class="text-5xl sm:text-7xl font-black tracking-tight mb-4 drop-shadow-lg">
+            <!-- RESPONSIVE TITLE FOR MOBILE -->
+            <h1 class="text-3xl sm:text-6xl md:text-7xl font-black tracking-tight mb-3 leading-tight sm:leading-none">
                 <span class="moving-title-effect">DREAM FOCUS PROJECTORS</span>
             </h1>
             
-            <p class="text-xl sm:text-2xl text-slate-300 max-w-2xl mx-auto font-medium mb-2 leading-relaxed">
+            <p class="text-base sm:text-2xl text-slate-200 max-w-2xl mx-auto font-medium mb-2 leading-relaxed">
                 எங்களிடம் அனைத்து கம்பெனி USED PROJECTOR கிடைக்கும்!
             </p>
-            <p class="text-sm sm:text-base text-amber-400 font-semibold tracking-wider uppercase mb-8">
-                Best Quality New & Pre-Owned Projectors • Tested & Verified Warranty
+            <p class="text-xs sm:text-base text-amber-400 font-semibold tracking-wider uppercase mb-6">
+                Best Quality New & Pre-Owned • Verified Warranty
             </p>
             
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-md mx-auto">
-                <a href="#inventory" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-8 py-3.5 rounded-xl shadow-xl shadow-amber-500/20 hover:shadow-amber-500/40 transition-all text-center hover:-translate-y-0.5">
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-3 max-w-md mx-auto">
+                <a href="#inventory" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3 px-6 rounded-xl shadow-lg shadow-amber-500/20 text-center text-sm sm:text-base">
                     View Our Stock
                 </a>
-                <a href="tel:+918508550847" class="w-full bg-slate-800/80 hover:bg-slate-700 text-white border border-slate-700 font-semibold px-8 py-3.5 rounded-xl transition-all flex items-center justify-center space-x-2 backdrop-blur-sm">
+                <a href="tel:+918508550847" class="w-full bg-slate-800/90 hover:bg-slate-700 text-white border border-slate-700 font-semibold py-3 px-6 rounded-xl text-sm sm:text-base flex items-center justify-center space-x-2">
                     <i class="fas fa-phone text-amber-400"></i>
                     <span>Call: 8508550847</span>
                 </a>
             </div>
         </div>
-        <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:24px_24px]"></div>
     </section>
 
     <!-- Core Highlights Grid -->
-    <section class="py-12 bg-slate-900/50 container mx-auto px-4">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            <div class="glass-card p-5 rounded-2xl">
-                <i class="fas fa-check-circle text-amber-400 text-3xl mb-3"></i>
-                <h4 class="font-bold text-sm sm:text-base text-white">100% தரமான பொருள்</h4>
-                <p class="text-xs text-slate-400 mt-1">Multi-point Quality Tested</p>
+    <section class="py-8 sm:py-12 bg-slate-900/50 container mx-auto px-3 sm:px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 text-center">
+            <div class="glass-card p-3.5 sm:p-5 rounded-xl sm:rounded-2xl">
+                <i class="fas fa-check-circle text-amber-400 text-2xl sm:text-3xl mb-1.5"></i>
+                <h4 class="font-bold text-xs sm:text-base text-white">100% தரமான பொருள்</h4>
+                <p class="text-[10px] sm:text-xs text-slate-400 mt-0.5">Quality Tested</p>
             </div>
-            <div class="glass-card p-5 rounded-2xl">
-                <i class="fas fa-arrow-up-right-from-square text-amber-400 text-3xl mb-3"></i>
-                <h4 class="font-bold text-sm sm:text-base text-white">Original ரிமோட்</h4>
-                <p class="text-xs text-slate-400 mt-1">Free Genuine Remote Included</p>
+            <div class="glass-card p-3.5 sm:p-5 rounded-xl sm:rounded-2xl">
+                <i class="fas fa-arrow-up-right-from-square text-amber-400 text-2xl sm:text-3xl mb-1.5"></i>
+                <h4 class="font-bold text-xs sm:text-base text-white">Original ரிமோட்</h4>
+                <p class="text-[10px] sm:text-xs text-slate-400 mt-0.5">Remote Included</p>
             </div>
-            <div class="glass-card p-5 rounded-2xl">
-                <i class="fas fa-bolt text-amber-400 text-3xl mb-3"></i>
-                <h4 class="font-bold text-sm sm:text-base text-white">சிறந்த பிரகாசம்</h4>
-                <p class="text-xs text-slate-400 mt-1">High-Lumen Tested Lamps</p>
+            <div class="glass-card p-3.5 sm:p-5 rounded-xl sm:rounded-2xl">
+                <i class="fas fa-bolt text-amber-400 text-2xl sm:text-3xl mb-1.5"></i>
+                <h4 class="font-bold text-xs sm:text-base text-white">சிறந்த பிரகாசம்</h4>
+                <p class="text-[10px] sm:text-xs text-slate-400 mt-0.5">High Brightness</p>
             </div>
-            <div class="glass-card p-5 rounded-2xl">
-                <i class="fas fa-shield-heart text-amber-400 text-3xl mb-3"></i>
-                <h4 class="font-bold text-sm sm:text-base text-white">நீண்ட ஆயுள்</h4>
-                <p class="text-xs text-slate-400 mt-1">Service Warranty Included</p>
+            <div class="glass-card p-3.5 sm:p-5 rounded-xl sm:rounded-2xl">
+                <i class="fas fa-shield-heart text-amber-400 text-2xl sm:text-3xl mb-1.5"></i>
+                <h4 class="font-bold text-xs sm:text-base text-white">நீண்ட ஆயுள்</h4>
+                <p class="text-[10px] sm:text-xs text-slate-400 mt-0.5">Warranty Included</p>
             </div>
         </div>
     </section>
 
     <!-- Projector Showroom Catalog -->
-    <section id="inventory" class="py-20 bg-slate-900/80 border-t border-b border-slate-800">
-        <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-amber-400 text-xs font-bold uppercase tracking-widest bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full">Stock Updated Daily</span>
-                <h2 class="text-3xl font-extrabold text-white sm:text-4xl mt-3 mb-3">Projector Catalog</h2>
-                <p class="text-slate-400">Premium setups ready for Homes, Offices, Schools, Colleges, Marriage Halls, and Churches.</p>
+    <section id="inventory" class="py-12 sm:py-20 bg-slate-900/80 border-t border-b border-slate-800">
+        <div class="container mx-auto px-3 sm:px-4">
+            <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+                <span class="text-amber-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 rounded-full">Stock Updated Daily</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-2 mb-2">Projector Catalog</h2>
+                <p class="text-xs sm:text-sm text-slate-400">Ready setups for Homes, Offices, Schools, Colleges, Marriage Halls, & Churches.</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 <!-- Product Card 1 -->
-                <div class="glass-card rounded-2xl overflow-hidden flex flex-col relative group">
-                    <div class="absolute top-3 right-3 z-20 bg-amber-500 text-slate-950 font-black text-xs px-3 py-1 rounded-full shadow-lg flex items-center gap-1 animate-bounce">
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col relative">
+                    <div class="absolute top-2.5 right-2.5 z-20 bg-amber-500 text-slate-950 font-black text-[10px] sm:text-xs px-2.5 py-0.5 rounded-full shadow-lg flex items-center gap-1 animate-bounce">
                         <i class="fas fa-fire"></i> HOT DEAL
                     </div>
                     
-                    <div class="h-56 bg-slate-950 overflow-hidden relative flex items-center justify-center">
-                        <img src="https://images.unsplash.com/photo-1535016120720-40c646be5580?auto=format&fit=crop&w=600&q=80" alt="Epson Projector" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                    <div class="h-44 sm:h-56 bg-slate-950 overflow-hidden relative flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1535016120720-40c646be5580?auto=format&fit=crop&w=600&q=80" alt="Epson Projector" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
-                        <span class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-md text-amber-400 text-xs font-bold px-2.5 py-1 rounded-md border border-slate-700">EPSON / PANASONIC</span>
+                        <span class="absolute bottom-2.5 left-2.5 bg-slate-900/90 text-amber-400 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded border border-slate-700">EPSON / PANASONIC</span>
                     </div>
 
-                    <div class="p-6 flex-1 flex flex-col">
-                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">Office & Classroom Models</h3>
-                        <p class="text-sm text-slate-400 mb-4 flex-1">High clarity models optimized for bright viewing areas, presentations, and institutional lecturing.</p>
+                    <div class="p-4 sm:p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg sm:text-xl font-bold text-white mb-1.5">Office & Classroom Models</h3>
+                        <p class="text-xs sm:text-sm text-slate-400 mb-3 flex-1">High clarity models optimized for bright viewing areas and presentations.</p>
                         
-                        <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-2.5 mb-6 text-xs text-amber-300 flex items-center gap-2">
+                        <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-2 mb-4 text-[11px] sm:text-xs text-amber-300 flex items-center gap-1.5">
                             <i class="fas fa-gift text-amber-400"></i>
                             <span>Includes Free Remote + Power Cable</span>
                         </div>
 
-                        <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                        <div class="flex flex-col sm:flex-row gap-3 pt-3 border-t border-slate-800 sm:items-center sm:justify-between">
                             <div>
-                                <div class="flex items-center gap-2">
-                                    <span class="text-xs text-slate-500 line-through">₹5,500</span>
-                                    <span class="bg-rose-500/20 text-rose-400 text-[10px] font-bold px-1.5 py-0.5 rounded">25% OFF</span>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="text-[11px] text-slate-500 line-through">₹5,500</span>
+                                    <span class="bg-rose-500/20 text-rose-400 text-[9px] font-bold px-1 py-0.2 rounded">25% OFF</span>
                                 </div>
-                                <span class="text-2xl font-black text-amber-400">₹4,000+</span>
+                                <span class="text-xl sm:text-2xl font-black text-amber-400">₹4,000+</span>
                             </div>
-                            <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS%20PROJECTORS,%20I%20am%20interested%20in%20your%20Epson/Panasonic%20projectors." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2 rounded-xl text-sm transition-all flex items-center space-x-1 shadow-lg shadow-emerald-600/20">
-                                <i class="fab fa-whatsapp"></i> <span>Inquire</span>
+                            <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS%20PROJECTORS,%20I%20am%20interested%20in%20your%20Epson/Panasonic%20projectors." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded-xl text-xs sm:text-sm text-center flex items-center justify-center space-x-1.5 shadow-md shadow-emerald-600/20 w-full sm:w-auto">
+                                <i class="fab fa-whatsapp"></i> <span>Inquire on WhatsApp</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Product Card 2 -->
-                <div class="glass-card rounded-2xl overflow-hidden flex flex-col relative group">
-                    <div class="absolute top-3 right-3 z-20 bg-emerald-500 text-slate-950 font-black text-xs px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
-                        <i class="fas fa-star"></i> POPULAR CHOICE
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col relative">
+                    <div class="absolute top-2.5 right-2.5 z-20 bg-emerald-500 text-slate-950 font-black text-[10px] sm:text-xs px-2.5 py-0.5 rounded-full shadow-lg flex items-center gap-1">
+                        <i class="fas fa-star"></i> POPULAR
                     </div>
 
-                    <div class="h-56 bg-slate-950 overflow-hidden relative flex items-center justify-center">
-                        <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" alt="Sony Theater" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                    <div class="h-44 sm:h-56 bg-slate-950 overflow-hidden relative flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" alt="Sony Theater" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
-                        <span class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-md text-amber-400 text-xs font-bold px-2.5 py-1 rounded-md border border-slate-700">SONY / DELL</span>
+                        <span class="absolute bottom-2.5 left-2.5 bg-slate-900/90 text-amber-400 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded border border-slate-700">SONY / DELL</span>
                     </div>
 
-                    <div class="p-6 flex-1 flex flex-col">
-                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">Premium Home Cinema</h3>
-                        <p class="text-sm text-slate-400 mb-4 flex-1">Enhanced dynamic contrasts configurations meant for home theaters, movies, and high-fidelity video playbacks.</p>
+                    <div class="p-4 sm:p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg sm:text-xl font-bold text-white mb-1.5">Premium Home Cinema</h3>
+                        <p class="text-xs sm:text-sm text-slate-400 mb-3 flex-1">Enhanced dynamic contrasts meant for home theaters and high-fidelity movie playback.</p>
                         
-                        <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-2.5 mb-6 text-xs text-amber-300 flex items-center gap-2">
+                        <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-2 mb-4 text-[11px] sm:text-xs text-amber-300 flex items-center gap-1.5">
                             <i class="fas fa-truck text-amber-400"></i>
                             <span>Free Testing & Setup Assistance</span>
                         </div>
 
-                        <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                        <div class="flex flex-col sm:flex-row gap-3 pt-3 border-t border-slate-800 sm:items-center sm:justify-between">
                             <div>
-                                <div class="flex items-center gap-2">
-                                    <span class="text-xs text-slate-500 line-through">₹18,000</span>
-                                    <span class="bg-rose-500/20 text-rose-400 text-[10px] font-bold px-1.5 py-0.5 rounded">16% OFF</span>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="text-[11px] text-slate-500 line-through">₹18,000</span>
+                                    <span class="bg-rose-500/20 text-rose-400 text-[9px] font-bold px-1 py-0.2 rounded">16% OFF</span>
                                 </div>
-                                <span class="text-2xl font-black text-amber-400">₹15,000+</span>
+                                <span class="text-xl sm:text-2xl font-black text-amber-400">₹15,000+</span>
                             </div>
-                            <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS%20PROJECTORS,%20I%20am%20interested%20in%20your%20Sony/Dell%20home%20cinema%20projectors." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2 rounded-xl text-sm transition-all flex items-center space-x-1 shadow-lg shadow-emerald-600/20">
-                                <i class="fab fa-whatsapp"></i> <span>Inquire</span>
+                            <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS%20PROJECTORS,%20I%20am%20interested%20in%20your%20Sony/Dell%20home%20cinema%20projectors." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded-xl text-xs sm:text-sm text-center flex items-center justify-center space-x-1.5 shadow-md shadow-emerald-600/20 w-full sm:w-auto">
+                                <i class="fab fa-whatsapp"></i> <span>Inquire on WhatsApp</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Product Card 3 -->
-                <div class="glass-card rounded-2xl overflow-hidden flex flex-col relative group">
-                    <div class="absolute top-3 right-3 z-20 bg-indigo-500 text-white font-black text-xs px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col relative">
+                    <div class="absolute top-2.5 right-2.5 z-20 bg-indigo-500 text-white font-black text-[10px] sm:text-xs px-2.5 py-0.5 rounded-full shadow-lg flex items-center gap-1">
                         <i class="fas fa-bolt"></i> HIGH LUMENS
                     </div>
 
-                    <div class="h-56 bg-slate-950 overflow-hidden relative flex items-center justify-center">
-                        <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="Laser Projector" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                    <div class="h-44 sm:h-56 bg-slate-950 overflow-hidden relative flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="Laser Projector" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
-                        <span class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-md text-amber-400 text-xs font-bold px-2.5 py-1 rounded-md border border-slate-700">HITACHI / CASIO LASER</span>
+                        <span class="absolute bottom-2.5 left-2.5 bg-slate-900/90 text-amber-400 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded border border-slate-700">HITACHI / CASIO LASER</span>
                     </div>
 
-                    <div class="p-6 flex-1 flex flex-col">
-                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">High-Lumen Venues</h3>
-                        <p class="text-sm text-slate-400 mb-4 flex-1">Heavy duty multi-hour workhorses built cleanly for wedding halls, event spaces, and massive boardrooms.</p>
+                    <div class="p-4 sm:p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg sm:text-xl font-bold text-white mb-1.5">High-Lumen Venues</h3>
+                        <p class="text-xs sm:text-sm text-slate-400 mb-3 flex-1">Heavy-duty workhorses built cleanly for wedding halls, event spaces, and massive boardrooms.</p>
                         
-                        <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-2.5 mb-6 text-xs text-amber-300 flex items-center gap-2">
+                        <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-2 mb-4 text-[11px] sm:text-xs text-amber-300 flex items-center gap-1.5">
                             <i class="fas fa-shield-alt text-amber-400"></i>
                             <span>Extended Service Support Warranty</span>
                         </div>
 
-                        <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                        <div class="flex flex-col sm:flex-row gap-3 pt-3 border-t border-slate-800 sm:items-center sm:justify-between">
                             <div>
-                                <div class="flex items-center gap-2">
-                                    <span class="text-xs text-slate-500 line-through">₹20,000</span>
-                                    <span class="bg-rose-500/20 text-rose-400 text-[10px] font-bold px-1.5 py-0.5 rounded">20% OFF</span>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="text-[11px] text-slate-500 line-through">₹20,000</span>
+                                    <span class="bg-rose-500/20 text-rose-400 text-[9px] font-bold px-1 py-0.2 rounded">20% OFF</span>
                                 </div>
-                                <span class="text-2xl font-black text-amber-400">₹16,000+</span>
+                                <span class="text-xl sm:text-2xl font-black text-amber-400">₹16,000+</span>
                             </div>
-                            <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS%20PROJECTORS,%20I%20am%20interested%20in%20your%20Hitachi/Casio%20High-Lumen%20projectors." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2 rounded-xl text-sm transition-all flex items-center space-x-1 shadow-lg shadow-emerald-600/20">
-                                <i class="fab fa-whatsapp"></i> <span>Inquire</span>
+                            <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS%20PROJECTORS,%20I%20am%20interested%20in%20your%20Hitachi/Casio%20High-Lumen%20projectors." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded-xl text-xs sm:text-sm text-center flex items-center justify-center space-x-1.5 shadow-md shadow-emerald-600/20 w-full sm:w-auto">
+                                <i class="fab fa-whatsapp"></i> <span>Inquire on WhatsApp</span>
                             </a>
                         </div>
                     </div>
@@ -395,47 +411,47 @@
     </section>
 
     <!-- Support Center Intake Section -->
-    <section id="services" class="py-20 container mx-auto px-4">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section id="services" class="py-12 sm:py-20 container mx-auto px-3 sm:px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div>
-                <span class="text-amber-400 text-xs font-bold tracking-widest uppercase bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full inline-block mb-3">Fast Fix Solutions</span>
-                <h2 class="text-3xl font-extrabold text-white sm:text-4xl mb-6">Professional Projector Service</h2>
-                <p class="text-slate-400 mb-6 leading-relaxed">Don't throw away your old device! We provide robust chip-level fixing services for all brands like Epson, Sony, Casio, and Panasonic.</p>
-                <ul class="space-y-4 text-sm text-slate-300">
-                    <li class="flex items-start"><i class="fas fa-check-circle text-amber-400 mt-1 mr-3 text-base"></i> Lens & Optical Prism Deep Dust Cleaning</li>
-                    <li class="flex items-start"><i class="fas fa-check-circle text-amber-400 mt-1 mr-3 text-base"></i> Original Replacement Lamps & Bulb Modules</li>
-                    <li class="flex items-start"><i class="fas fa-check-circle text-amber-400 mt-1 mr-3 text-base"></i> Power Supply Ballast Board Repairs</li>
-                    <li class="flex items-start"><i class="fas fa-check-circle text-amber-400 mt-1 mr-3 text-base"></i> Color Wheel & Motherboard Servicing</li>
+                <span class="text-amber-400 text-[10px] sm:text-xs font-bold tracking-widest uppercase bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 rounded-full inline-block mb-2">Fast Fix Solutions</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-4">Professional Projector Service</h2>
+                <p class="text-xs sm:text-sm text-slate-400 mb-4 leading-relaxed">Don't throw away your old device! We provide chip-level fixing services for Epson, Sony, Casio, and Panasonic.</p>
+                <ul class="space-y-2.5 text-xs sm:text-sm text-slate-300 mb-6">
+                    <li class="flex items-center"><i class="fas fa-check-circle text-amber-400 mr-2.5 text-sm"></i> Lens & Optical Prism Deep Cleaning</li>
+                    <li class="flex items-center"><i class="fas fa-check-circle text-amber-400 mr-2.5 text-sm"></i> Original Replacement Lamps & Bulbs</li>
+                    <li class="flex items-center"><i class="fas fa-check-circle text-amber-400 mr-2.5 text-sm"></i> Power Supply Ballast Board Repairs</li>
+                    <li class="flex items-center"><i class="fas fa-check-circle text-amber-400 mr-2.5 text-sm"></i> Color Wheel & Motherboard Servicing</li>
                 </ul>
             </div>
 
-            <div class="bg-slate-900 rounded-2xl p-8 border border-slate-800 shadow-2xl relative overflow-hidden">
-                <div class="bg-gradient-to-r from-amber-500/20 to-amber-600/10 border border-amber-500/30 p-3 rounded-xl mb-6 flex items-center space-x-3">
-                    <div class="bg-amber-500 text-slate-950 p-2 rounded-lg font-bold">
+            <div class="bg-slate-900 rounded-2xl p-5 sm:p-8 border border-slate-800 shadow-xl">
+                <div class="bg-amber-500/10 border border-amber-500/20 p-3 rounded-xl mb-4 flex items-center space-x-3">
+                    <div class="bg-amber-500 text-slate-950 p-2 rounded-lg font-bold text-xs">
                         <i class="fas fa-wrench"></i>
                     </div>
                     <div>
-                        <h4 class="text-xs font-bold text-amber-400 uppercase tracking-wider">Service Promo</h4>
-                        <p class="text-xs text-slate-300">Free Inspection & Diagnostic Checkup on all incoming repairs!</p>
+                        <h4 class="text-[10px] font-bold text-amber-400 uppercase tracking-wider">Free Service Promo</h4>
+                        <p class="text-xs text-slate-300">Free Inspection & Diagnostic Checkup!</p>
                     </div>
                 </div>
 
-                <h3 class="text-xl font-bold mb-4 text-white">Book a Service Request</h3>
-                <form id="bookingForm" class="space-y-4">
+                <h3 class="text-lg sm:text-xl font-bold mb-4 text-white">Book a Service Request</h3>
+                <form id="bookingForm" class="space-y-3">
                     <div>
-                        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Your Name</label>
-                        <input type="text" id="srv-name" required placeholder="Enter name" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors">
+                        <label class="block text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Your Name</label>
+                        <input type="text" id="srv-name" required placeholder="Enter name" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Projector Model / Brand</label>
-                        <input type="text" id="srv-brand" required placeholder="e.g., Epson EB-470i" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors">
+                        <label class="block text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Projector Model / Brand</label>
+                        <input type="text" id="srv-brand" required placeholder="e.g., Epson EB-470i" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Describe The Problem</label>
-                        <textarea id="srv-problem" required rows="3" placeholder="e.g., Blurry screen, overheating, no power..." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors"></textarea>
+                        <label class="block text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Describe The Problem</label>
+                        <textarea id="srv-problem" required rows="3" placeholder="e.g., Blurry screen, overheating, no power..." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500"></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3.5 rounded-xl shadow-lg shadow-amber-500/20 transition-all flex items-center justify-center space-x-2">
-                        <i class="fab fa-whatsapp text-lg"></i>
+                    <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3 rounded-xl text-sm transition-all flex items-center justify-center space-x-2">
+                        <i class="fab fa-whatsapp text-base"></i>
                         <span>Submit to WhatsApp</span>
                     </button>
                 </form>
@@ -443,39 +459,37 @@
         </div>
     </section>
 
-    <!-- Structural Location Footer Block -->
-    <footer id="contact" class="bg-slate-950 border-t border-slate-900 pt-16 pb-8 px-4 text-slate-400">
-        <div class="container mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+    <!-- Footer -->
+    <footer id="contact" class="bg-slate-950 border-t border-slate-900 pt-10 pb-6 px-4 text-slate-400">
+        <div class="container mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div>
-                <h4 class="text-white font-bold text-lg mb-4">DREAM FOCUS PROJECTORS</h4>
-                <p class="text-sm leading-relaxed mb-6">Expert sales and diagnostic service handlers dealing across brand new and performance-tested pre-owned projector units.</p>
-                <div class="space-y-3 text-sm">
-                    <p class="flex items-start text-slate-200"><i class="fas fa-user text-amber-500 mt-1 mr-3 w-4"></i> <span><strong>Proprietor:</strong> M. KANAGAVEL</span></p>
-                    <p class="flex items-start text-slate-200"><i class="fas fa-phone text-amber-500 mt-1 mr-3 w-4"></i> <span>+91 85085 50847</span></p>
+                <h4 class="text-white font-bold text-base mb-3">DREAM FOCUS PROJECTORS</h4>
+                <p class="text-xs sm:text-sm leading-relaxed mb-4">Expert sales and diagnostic service handlers dealing across brand new and pre-owned projector units.</p>
+                <div class="space-y-2 text-xs sm:text-sm">
+                    <p class="flex items-center text-slate-200"><i class="fas fa-user text-amber-500 mr-2.5 w-4"></i> <span><strong>Proprietor:</strong> M. KANAGAVEL</span></p>
+                    <p class="flex items-center text-slate-200"><i class="fas fa-phone text-amber-500 mr-2.5 w-4"></i> <span>+91 85085 50847</span></p>
                 </div>
             </div>
             <div>
-                <h4 class="text-white font-bold text-lg mb-4">Shop Address</h4>
-                <p class="text-sm text-slate-200 leading-relaxed mb-4 flex items-start">
-                    <i class="fas fa-location-dot text-amber-500 mt-1 mr-3 w-4"></i>
-                    <span>No. 1/A Rengarajan street, Boss veedhi,<br>Sellur, Madurai - 625002,<br>Tamil Nadu, India.</span>
+                <h4 class="text-white font-bold text-base mb-3">Shop Address</h4>
+                <p class="text-xs sm:text-sm text-slate-200 leading-relaxed flex items-start">
+                    <i class="fas fa-location-dot text-amber-500 mt-1 mr-2.5 w-4"></i>
+                    <span>No. 1/A Rengarajan street, Boss veedhi,<br>Sellur, Madurai - 625002, Tamil Nadu, India.</span>
                 </p>
             </div>
         </div>
-        <div class="container mx-auto border-t border-slate-900 pt-8 text-center text-xs text-slate-600">
+        <div class="container mx-auto border-t border-slate-900 pt-6 text-center text-[10px] sm:text-xs text-slate-600">
             <p>&copy; 2026 DREAM FOCUS PROJECTORS. Madurai Branch.</p>
         </div>
     </footer>
 
     <!-- Floating Action Quick WhatsApp Widget -->
-    <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS,%20I%20have%20an%20inquiry%20about%20a%20projector." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-400 text-white p-4 rounded-full shadow-2xl pulse-glow flex items-center justify-center text-2xl transition-transform hover:scale-110">
+    <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS,%20I%20have%20an%20inquiry%20about%20a%20projector." target="_blank" class="fixed bottom-4 right-4 z-50 bg-emerald-500 text-white p-3.5 rounded-full shadow-2xl pulse-glow flex items-center justify-center text-xl">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Logic Processing Script Attachment -->
-    <script src="js/script.js"></script>
+    <!-- Form Handler -->
     <script>
-        // Form redirect handler to WhatsApp
         document.getElementById('bookingForm')?.addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('srv-name').value;

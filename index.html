@@ -20,21 +20,19 @@
          END: GOOGLE ADS GLOBAL TRACKING ENGINE
          ========================================== -->
 
-    <!-- Tailwind CSS UI Component Engine -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- FontAwesome Vector Graphics Package Icons -->
+    <!-- Reliable Tailwind CSS Engine (Fixes Mobile Styling Issues) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Vector Graphics Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Mode Specific Custom Visual Effects -->
+    <!-- Custom CSS Animations & Styles -->
     <style>
         html, body {
             overflow-x: hidden;
             width: 100%;
         }
 
-        /* ------------------------------------------
-           TICKER ANIMATIONS (DESKTOP & MOBILE)
-           ------------------------------------------ */
+        /* Continuous Ticker Animation */
         @keyframes marqueeMobile {
             0% { transform: translateX(0%); }
             100% { transform: translateX(-50%); }
@@ -67,9 +65,7 @@
             animation-play-state: paused;
         }
 
-        /* ------------------------------------------
-           DESKTOP vs MOBILE PROJECTOR LIGHT BEAM
-           ------------------------------------------ */
+        /* Projector Light Beams */
         @keyframes projectorBeamDesktop {
             0%, 100% {
                 opacity: 0.35;
@@ -120,9 +116,7 @@
             animation: projectorBeamMobile 4.5s ease-in-out infinite;
         }
 
-        /* ------------------------------------------
-           MOVING SHINE TEXT EFFECT
-           ------------------------------------------ */
+        /* Moving Metallic Text Effect */
         @keyframes textShine {
             0% { background-position: -200% center; }
             100% { background-position: 200% center; }
@@ -146,9 +140,7 @@
             animation: textShine 3.5s linear infinite;
         }
 
-        /* ------------------------------------------
-           CARD STYLES & GLOW
-           ------------------------------------------ */
+        /* Floating Glow Effect */
         @keyframes pulseGlow {
             0%, 100% { box-shadow: 0 0 12px rgba(245, 158, 11, 0.4); }
             50% { box-shadow: 0 0 24px rgba(245, 158, 11, 0.8); }
@@ -356,6 +348,46 @@
     </section>
 
     <!-- ==========================================
+         FEATURED ADVERTISEMENT BANNER
+         ========================================== -->
+    <section class="py-6 sm:py-10 container mx-auto px-3 sm:px-4">
+        <div class="relative bg-gradient-to-r from-amber-500/20 via-slate-900 to-amber-500/10 border-2 border-amber-500/40 rounded-2xl sm:rounded-3xl p-5 sm:p-8 overflow-hidden shadow-2xl">
+            <!-- Ad Badge -->
+            <div class="absolute top-0 right-0 bg-amber-500 text-slate-950 text-[10px] sm:text-xs font-black uppercase px-3 py-1 rounded-bl-xl tracking-wider shadow-md">
+                📢 SPECIAL ADVERTISEMENT OFFER
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                <!-- Left Details -->
+                <div class="md:col-span-2 space-y-3 text-left">
+                    <div class="inline-flex items-center gap-2 bg-amber-400/10 border border-amber-400/30 px-3 py-1 rounded-full text-amber-400 text-xs font-bold">
+                        <i class="fas fa-bullhorn"></i> Limited Stock Deal in Madurai
+                    </div>
+                    <h3 class="text-xl sm:text-3xl font-extrabold text-white leading-snug">
+                        Complete Home Cinema Combo Package!
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        Get a high-brightness Pre-Owned HD Projector + 6ft Portable Wall Screen + Universal Ceiling Mount Bracket + 10m HDMI Cable all bundled together!
+                    </p>
+                    <div class="flex items-center gap-3 pt-1">
+                        <span class="text-2xl sm:text-4xl font-black text-amber-400">₹6,999</span>
+                        <span class="text-xs sm:text-sm text-slate-500 line-through">₹11,500</span>
+                        <span class="bg-rose-500/20 text-rose-400 text-xs font-bold px-2 py-0.5 rounded-md">Save 40%</span>
+                    </div>
+                </div>
+
+                <!-- Right Action Button -->
+                <div class="flex flex-col sm:flex-row md:flex-col gap-3 justify-center">
+                    <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS,%20I%20want%20to%20claim%20the%20Home%20Cinema%20Combo%20Package%20Offer!" target="_blank" class="bg-transparent hover:bg-amber-500/10 text-amber-400 hover:text-white font-bold py-3 px-5 rounded-xl text-xs sm:text-sm text-center flex items-center justify-center space-x-2 border border-amber-500/60 hover:border-amber-400 transition-all shadow-lg">
+                        <i class="fab fa-whatsapp text-lg"></i>
+                        <span>Claim Package via WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
          PRODUCT SHOWROOM CATALOG
          ========================================== -->
     <section id="inventory" class="py-12 sm:py-20 bg-slate-900/80 border-t border-b border-slate-800">
@@ -396,7 +428,6 @@
                                 </div>
                                 <span class="text-xl sm:text-2xl font-black text-amber-400">₹4,000+</span>
                             </div>
-                            <!-- Transparent Inquire Button -->
                             <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS%20PROJECTORS,%20I%20am%20interested%20in%20your%20Epson/Panasonic%20projectors." target="_blank" class="bg-transparent hover:bg-amber-500/10 text-amber-400 hover:text-white font-bold py-2.5 sm:py-2 px-4 rounded-xl text-xs sm:text-sm text-center flex items-center justify-center space-x-1.5 border border-slate-700 hover:border-amber-400 transition-all w-full sm:w-auto">
                                 <i class="fab fa-whatsapp text-sm"></i> <span>Inquire on WhatsApp</span>
                             </a>
@@ -433,7 +464,6 @@
                                 </div>
                                 <span class="text-xl sm:text-2xl font-black text-amber-400">₹15,000+</span>
                             </div>
-                            <!-- Transparent Inquire Button -->
                             <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS%20PROJECTORS,%20I%20am%20interested%20in%20your%20Sony/Dell%20home%20cinema%20projectors." target="_blank" class="bg-transparent hover:bg-amber-500/10 text-amber-400 hover:text-white font-bold py-2.5 sm:py-2 px-4 rounded-xl text-xs sm:text-sm text-center flex items-center justify-center space-x-1.5 border border-slate-700 hover:border-amber-400 transition-all w-full sm:w-auto">
                                 <i class="fab fa-whatsapp text-sm"></i> <span>Inquire on WhatsApp</span>
                             </a>
@@ -470,7 +500,6 @@
                                 </div>
                                 <span class="text-xl sm:text-2xl font-black text-amber-400">₹16,000+</span>
                             </div>
-                            <!-- Transparent Inquire Button -->
                             <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS%20PROJECTORS,%20I%20am%20interested%20in%20your%20Hitachi/Casio%20High-Lumen%20projectors." target="_blank" class="bg-transparent hover:bg-amber-500/10 text-amber-400 hover:text-white font-bold py-2.5 sm:py-2 px-4 rounded-xl text-xs sm:text-sm text-center flex items-center justify-center space-x-1.5 border border-slate-700 hover:border-amber-400 transition-all w-full sm:w-auto">
                                 <i class="fab fa-whatsapp text-sm"></i> <span>Inquire on WhatsApp</span>
                             </a>

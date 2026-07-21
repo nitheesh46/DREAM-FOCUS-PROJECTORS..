@@ -20,12 +20,12 @@
          END: GOOGLE ADS GLOBAL TRACKING ENGINE
          ========================================== -->
 
-    <!-- Reliable Tailwind CSS Engine (Fixes Mobile Styling Issues) -->
+    <!-- Reliable Tailwind CSS Engine -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Vector Graphics Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Custom CSS Animations & Styles -->
+    <!-- Custom CSS Animations & Mobile Glowing Styles -->
     <style>
         html, body {
             overflow-x: hidden;
@@ -79,11 +79,11 @@
 
         @keyframes projectorBeamMobile {
             0%, 100% {
-                opacity: 0.25;
+                opacity: 0.3;
                 transform: translateX(-50%) rotate(-2deg) scaleX(0.9);
             }
             50% {
-                opacity: 0.5;
+                opacity: 0.6;
                 transform: translateX(-50%) rotate(2deg) scaleX(1.05);
             }
         }
@@ -106,9 +106,9 @@
             position: absolute;
             top: -70px;
             left: 50%;
-            width: 260px;
-            height: 320px;
-            background: conic-gradient(from 180deg at 50% 0%, rgba(245, 158, 11, 0.45) 0deg, rgba(245, 158, 11, 0) 50deg, rgba(245, 158, 11, 0) 310deg, rgba(245, 158, 11, 0.45) 360deg);
+            width: 280px;
+            height: 340px;
+            background: conic-gradient(from 180deg at 50% 0%, rgba(245, 158, 11, 0.5) 0deg, rgba(245, 158, 11, 0) 50deg, rgba(245, 158, 11, 0) 310deg, rgba(245, 158, 11, 0.5) 360deg);
             filter: blur(18px);
             pointer-events: none;
             z-index: 1;
@@ -148,19 +148,24 @@
 
         .pulse-glow { animation: pulseGlow 2.5s infinite; }
 
+        /* FIXED: GLASS CARD GLOW FOR BOTH MOBILE & DESKTOP */
         .glass-card {
-            background: rgba(15, 23, 42, 0.85);
+            background: rgba(15, 23, 42, 0.88);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(245, 158, 11, 0.35); /* Visible Glowing Amber Border on Mobile */
+            box-shadow: 0 0 18px rgba(245, 158, 11, 0.15); /* Continuous Ambient Glow for Mobile */
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:active, .glass-card:hover {
+            border-color: rgba(245, 158, 11, 0.8);
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.35);
         }
 
         @media (min-width: 768px) {
             .glass-card:hover {
-                border-color: rgba(245, 158, 11, 0.5);
                 transform: translateY(-6px);
-                box-shadow: 0 20px 30px -10px rgba(245, 158, 11, 0.15);
             }
         }
     </style>
@@ -348,18 +353,31 @@
     </section>
 
     <!-- ==========================================
-         FEATURED ADVERTISEMENT BANNER
+         FEATURED ADVERTISEMENT BANNER WITH VIDEO
          ========================================== -->
     <section class="py-6 sm:py-10 container mx-auto px-3 sm:px-4">
-        <div class="relative bg-gradient-to-r from-amber-500/20 via-slate-900 to-amber-500/10 border-2 border-amber-500/40 rounded-2xl sm:rounded-3xl p-5 sm:p-8 overflow-hidden shadow-2xl">
+        <div class="relative bg-gradient-to-r from-amber-500/20 via-slate-900 to-amber-500/10 border-2 border-amber-500/50 rounded-2xl sm:rounded-3xl p-4 sm:p-8 overflow-hidden shadow-[0_0_25px_rgba(245,158,11,0.25)]">
             <!-- Ad Badge -->
             <div class="absolute top-0 right-0 bg-amber-500 text-slate-950 text-[10px] sm:text-xs font-black uppercase px-3 py-1 rounded-bl-xl tracking-wider shadow-md">
-                📢 SPECIAL ADVERTISEMENT OFFER
+                📢 SPECIAL VIDEO OFFER
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-                <!-- Left Details -->
-                <div class="md:col-span-2 space-y-3 text-left">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                <!-- Video Section (5 cols on large screens) -->
+                <div class="lg:col-span-5 w-full">
+                    <div class="relative rounded-xl overflow-hidden border border-amber-500/50 shadow-xl group bg-slate-950">
+                        <video class="w-full h-48 sm:h-56 object-cover" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80">
+                            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="absolute bottom-2 left-2 bg-slate-950/90 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] text-amber-400 font-bold border border-slate-800 flex items-center gap-1.5">
+                            <i class="fas fa-play text-[8px] text-amber-400 animate-pulse"></i> HD Cinema Demo
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text & Pricing Section (7 cols on large screens) -->
+                <div class="lg:col-span-7 space-y-3 text-left">
                     <div class="inline-flex items-center gap-2 bg-amber-400/10 border border-amber-400/30 px-3 py-1 rounded-full text-amber-400 text-xs font-bold">
                         <i class="fas fa-bullhorn"></i> Limited Stock Deal in Madurai
                     </div>
@@ -374,21 +392,20 @@
                         <span class="text-xs sm:text-sm text-slate-500 line-through">₹11,500</span>
                         <span class="bg-rose-500/20 text-rose-400 text-xs font-bold px-2 py-0.5 rounded-md">Save 40%</span>
                     </div>
-                </div>
 
-                <!-- Right Action Button -->
-                <div class="flex flex-col sm:flex-row md:flex-col gap-3 justify-center">
-                    <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS,%20I%20want%20to%20claim%20the%20Home%20Cinema%20Combo%20Package%20Offer!" target="_blank" class="bg-transparent hover:bg-amber-500/10 text-amber-400 hover:text-white font-bold py-3 px-5 rounded-xl text-xs sm:text-sm text-center flex items-center justify-center space-x-2 border border-amber-500/60 hover:border-amber-400 transition-all shadow-lg">
-                        <i class="fab fa-whatsapp text-lg"></i>
-                        <span>Claim Package via WhatsApp</span>
-                    </a>
+                    <div class="pt-2">
+                        <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS,%20I%20want%20to%20claim%20the%20Home%20Cinema%20Combo%20Package%20Offer!" target="_blank" class="bg-transparent hover:bg-amber-500/10 text-amber-400 hover:text-white font-bold py-3 px-5 rounded-xl text-xs sm:text-sm text-center inline-flex items-center justify-center space-x-2 border border-amber-500/60 hover:border-amber-400 transition-all shadow-lg w-full sm:w-auto">
+                            <i class="fab fa-whatsapp text-lg"></i>
+                            <span>Claim Package via WhatsApp</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ==========================================
-         PRODUCT SHOWROOM CATALOG
+         PRODUCT SHOWROOM CATALOG (GLOW FIXED FOR MOBILE)
          ========================================== -->
     <section id="inventory" class="py-12 sm:py-20 bg-slate-900/80 border-t border-b border-slate-800">
         <div class="container mx-auto px-3 sm:px-4">
@@ -408,7 +425,7 @@
                     <div class="h-44 sm:h-56 bg-slate-950 overflow-hidden relative flex items-center justify-center">
                         <img src="https://images.unsplash.com/photo-1535016120720-40c646be5580?auto=format&fit=crop&w=600&q=80" alt="Epson Projector" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
-                        <span class="absolute bottom-2.5 left-2.5 bg-slate-900/90 text-amber-400 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded border border-slate-700">EPSON / PANASONIC</span>
+                        <span class="absolute bottom-2.5 left-2.5 bg-slate-900/90 text-amber-400 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded border border-amber-500/40">EPSON / PANASONIC</span>
                     </div>
 
                     <div class="p-4 sm:p-6 flex-1 flex flex-col">
@@ -428,7 +445,7 @@
                                 </div>
                                 <span class="text-xl sm:text-2xl font-black text-amber-400">₹4,000+</span>
                             </div>
-                            <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS%20PROJECTORS,%20I%20am%20interested%20in%20your%20Epson/Panasonic%20projectors." target="_blank" class="bg-transparent hover:bg-amber-500/10 text-amber-400 hover:text-white font-bold py-2.5 sm:py-2 px-4 rounded-xl text-xs sm:text-sm text-center flex items-center justify-center space-x-1.5 border border-slate-700 hover:border-amber-400 transition-all w-full sm:w-auto">
+                            <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS%20PROJECTORS,%20I%20am%20interested%20in%20your%20Epson/Panasonic%20projectors." target="_blank" class="bg-transparent hover:bg-amber-500/10 text-amber-400 hover:text-white font-bold py-2.5 sm:py-2 px-4 rounded-xl text-xs sm:text-sm text-center flex items-center justify-center space-x-1.5 border border-amber-500/50 hover:border-amber-400 transition-all w-full sm:w-auto">
                                 <i class="fab fa-whatsapp text-sm"></i> <span>Inquire on WhatsApp</span>
                             </a>
                         </div>
@@ -444,7 +461,7 @@
                     <div class="h-44 sm:h-56 bg-slate-950 overflow-hidden relative flex items-center justify-center">
                         <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" alt="Sony Theater" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
-                        <span class="absolute bottom-2.5 left-2.5 bg-slate-900/90 text-amber-400 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded border border-slate-700">SONY / DELL</span>
+                        <span class="absolute bottom-2.5 left-2.5 bg-slate-900/90 text-amber-400 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded border border-amber-500/40">SONY / DELL</span>
                     </div>
 
                     <div class="p-4 sm:p-6 flex-1 flex flex-col">
@@ -464,7 +481,7 @@
                                 </div>
                                 <span class="text-xl sm:text-2xl font-black text-amber-400">₹15,000+</span>
                             </div>
-                            <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS%20PROJECTORS,%20I%20am%20interested%20in%20your%20Sony/Dell%20home%20cinema%20projectors." target="_blank" class="bg-transparent hover:bg-amber-500/10 text-amber-400 hover:text-white font-bold py-2.5 sm:py-2 px-4 rounded-xl text-xs sm:text-sm text-center flex items-center justify-center space-x-1.5 border border-slate-700 hover:border-amber-400 transition-all w-full sm:w-auto">
+                            <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS%20PROJECTORS,%20I%20am%20interested%20in%20your%20Sony/Dell%20home%20cinema%20projectors." target="_blank" class="bg-transparent hover:bg-amber-500/10 text-amber-400 hover:text-white font-bold py-2.5 sm:py-2 px-4 rounded-xl text-xs sm:text-sm text-center flex items-center justify-center space-x-1.5 border border-amber-500/50 hover:border-amber-400 transition-all w-full sm:w-auto">
                                 <i class="fab fa-whatsapp text-sm"></i> <span>Inquire on WhatsApp</span>
                             </a>
                         </div>
@@ -480,7 +497,7 @@
                     <div class="h-44 sm:h-56 bg-slate-950 overflow-hidden relative flex items-center justify-center">
                         <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="Laser Projector" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
-                        <span class="absolute bottom-2.5 left-2.5 bg-slate-900/90 text-amber-400 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded border border-slate-700">HITACHI / CASIO LASER</span>
+                        <span class="absolute bottom-2.5 left-2.5 bg-slate-900/90 text-amber-400 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded border border-amber-500/40">HITACHI / CASIO LASER</span>
                     </div>
 
                     <div class="p-4 sm:p-6 flex-1 flex flex-col">
@@ -500,7 +517,7 @@
                                 </div>
                                 <span class="text-xl sm:text-2xl font-black text-amber-400">₹16,000+</span>
                             </div>
-                            <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS%20PROJECTORS,%20I%20am%20interested%20in%20your%20Hitachi/Casio%20High-Lumen%20projectors." target="_blank" class="bg-transparent hover:bg-amber-500/10 text-amber-400 hover:text-white font-bold py-2.5 sm:py-2 px-4 rounded-xl text-xs sm:text-sm text-center flex items-center justify-center space-x-1.5 border border-slate-700 hover:border-amber-400 transition-all w-full sm:w-auto">
+                            <a href="https://wa.me/918508550847?text=Hi%20DREAM%20FOCUS%20PROJECTORS,%20I%20am%20interested%20in%20your%20Hitachi/Casio%20High-Lumen%20projectors." target="_blank" class="bg-transparent hover:bg-amber-500/10 text-amber-400 hover:text-white font-bold py-2.5 sm:py-2 px-4 rounded-xl text-xs sm:text-sm text-center flex items-center justify-center space-x-1.5 border border-amber-500/50 hover:border-amber-400 transition-all w-full sm:w-auto">
                                 <i class="fab fa-whatsapp text-sm"></i> <span>Inquire on WhatsApp</span>
                             </a>
                         </div>

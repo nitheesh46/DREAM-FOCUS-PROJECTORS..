@@ -584,7 +584,7 @@
     </section>
 
     <!-- ==========================================
-         FOOTER WITH GOOGLE MAPS LINK
+         FOOTER WITH INTERACTIVE MAP & NAVIGATION BUTTON
          ========================================== -->
     <footer id="contact" class="bg-slate-950 border-t border-slate-900 pt-10 pb-6 px-4 text-slate-400">
         <div class="container mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -596,16 +596,31 @@
                     <p class="flex items-center text-slate-200"><i class="fas fa-phone text-amber-500 mr-2.5 w-4"></i> <span>+91 85085 50847</span></p>
                 </div>
             </div>
+            
+            <!-- SHOP ADDRESS WITH EMBEDDED LIVE GOOGLE MAP -->
             <div>
-                <h4 class="text-white font-bold text-base mb-3">Shop Address</h4>
+                <h4 class="text-white font-bold text-base mb-3">Shop Address & Location</h4>
                 <p class="text-xs sm:text-sm text-slate-200 leading-relaxed flex items-start mb-3">
                     <i class="fas fa-location-dot text-amber-500 mt-1 mr-2.5 w-4"></i>
                     <span>No. 1/A Rengarajan street, Boss veedhi,<br>Sellur, Madurai - 625002, Tamil Nadu, India.</span>
                 </p>
-                <!-- GOOGLE MAPS BUTTON -->
-                <a href="https://maps.app.goo.gl/THnRD45kvRbQP3As9?g_st=ac" target="_blank" class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/40 text-amber-400 hover:bg-amber-500 hover:text-slate-950 px-3.5 py-2 rounded-xl text-xs font-bold transition-all">
+
+                <!-- Embedded Live Google Map -->
+                <div class="rounded-xl overflow-hidden border border-amber-500/40 shadow-lg mb-3 bg-slate-900">
+                    <iframe 
+                        class="w-full h-48 sm:h-56"
+                        src="https://maps.google.com/maps?q=No.+1/A+Rengarajan+street,+Boss+veedhi,+Sellur,+Madurai+-+625002&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+                <!-- One-Tap Directions Link Button -->
+                <a href="https://maps.app.goo.gl/THnRD45kvRbQP3As9?g_st=ac" target="_blank" class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/40 text-amber-400 hover:bg-amber-500 hover:text-slate-950 px-3.5 py-2 rounded-xl text-xs font-bold transition-all w-full sm:w-auto justify-center">
                     <i class="fas fa-map-location-dot text-sm"></i>
-                    <span>Get Google Maps Directions</span>
+                    <span>Open in Google Maps App</span>
                 </a>
             </div>
         </div>

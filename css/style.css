@@ -1,12 +1,33 @@
-/* Custom Premium Luxury Stylesheet for Dream Focus Projectors */
+/* ==========================================================================
+   Custom Premium Luxury Stylesheet for Dream Focus Projectors
+   ========================================================================== */
 
 :root {
   --luxury-gold: #f59e0b;
-  --dark-glass: rgba(15, 23, 42, 0.6);
-  --border-glow: rgba(255, 255, 255, 0.06);
+  --luxury-gold-glow: rgba(245, 158, 11, 0.35);
+  --dark-glass: rgba(15, 23, 42, 0.75);
+  --dark-glass-solid: rgba(15, 23, 42, 0.95);
+  --border-glow: rgba(245, 158, 11, 0.25);
+  --border-subtle: rgba(255, 255, 255, 0.08);
 }
 
-/* Fluid Luxury Space Gradient Engine */
+/* 1. Custom Dark Luxury Scrollbar Engine */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(245, 158, 11, 0.4);
+  border-radius: 9999px;
+  border: 2px solid #020617;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--luxury-gold);
+}
+
+/* 2. Fluid Luxury Space Gradient Engine */
 .luxury-matrix-space {
   position: fixed;
   top: 0;
@@ -15,25 +36,45 @@
   height: 100vh;
   z-index: -1;
   pointer-events: none;
-  background: radial-gradient(circle at 12% 15%, rgba(59, 130, 246, 0.08) 0%, transparent 45%),
-              radial-gradient(circle at 88% 82%, rgba(245, 158, 11, 0.06) 0%, transparent 50%);
+  background: 
+    radial-gradient(circle at 12% 15%, rgba(59, 130, 246, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 88% 82%, rgba(245, 158, 11, 0.06) 0%, transparent 50%);
 }
 
-/* Glassmorphic Panel Textures */
+/* 3. Glassmorphic Panel Textures */
 .glass-panel {
   background: var(--dark-glass);
-  backdrop-filter: blur(24px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-glow);
-  box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.7);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.glass-panel:hover {
-  border-color: rgba(245, 158, 11, 0.3);
-  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 15px rgba(245, 158, 11, 0.08);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Desktop Hover Elevation */
+@media (hover: hover) {
+  .glass-panel:hover {
+    border-color: rgba(245, 158, 11, 0.6);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 25px var(--luxury-gold-glow);
+    transform: translateY(-5px);
+  }
+}
+
+/* Mobile Ambient Touch Lighting */
+@media (max-width: 767px) {
+  .glass-panel {
+    border-color: rgba(245, 158, 11, 0.4);
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.12);
+  }
+  .glass-panel:active {
+    transform: scale(0.98);
+    border-color: var(--luxury-gold);
+  }
+}
+
+/* 4. Badges & Tags System */
 .badge {
-  background: rgba(245, 158, 11, 0.05);
+  background: rgba(245, 158, 11, 0.08);
   color: #f59e0b;
   padding: 0.5rem 1.25rem;
   border-radius: 9999px;
@@ -41,70 +82,107 @@
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  display: inline-block;
-  border: 1px solid rgba(245, 158, 11, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(245, 158, 11, 0.3);
 }
 
 .tag {
   position: absolute;
   top: 0.875rem;
   left: 0.875rem;
-  background: rgba(2, 6, 23, 0.85);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(245, 158, 11, 0.4);
+  background: rgba(2, 6, 23, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(245, 158, 11, 0.5);
   color: #f59e0b;
   font-size: 0.65rem;
   font-weight: 800;
   padding: 0.35rem 0.75rem;
   border-radius: 0.5rem;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
+/* 5. Buttons & CTAs */
 .inquire-btn {
   background: rgba(255, 255, 255, 0.05);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0.5rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.6rem 1.1rem;
   border-radius: 0.75rem;
   font-size: 0.75rem;
   font-weight: 700;
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  transition: background-color 0.3s, border-color 0.3s;
+  user-select: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .inquire-btn:hover {
   background: #16a34a;
-  border-color: transparent;
+  color: #ffffff;
+  border-color: #22c55e;
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
 }
 
+/* Metallic Light-Sweep Shimmer Animation */
+@keyframes shimmerSweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-effect {
+  background: linear-gradient(
+    110deg,
+    rgba(245, 158, 11, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(245, 158, 11, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmerSweep 3s infinite linear;
+}
+
+/* 6. Video Display Frame */
 .video-frame {
   width: 100%;
   aspect-ratio: 16 / 9;
   border: none;
   background-color: #020617;
+  border-radius: 0.875rem;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
 }
 
+/* 7. Form Controls */
 .form-label {
   display: block;
   font-size: 0.65rem;
   font-weight: 800;
-  color: #64748b;
+  color: #94a3b8;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   margin-bottom: 0.35rem;
 }
 
 .form-input {
   width: 100%;
-  background-color: rgba(2, 6, 23, 0.8);
-  border: 1px solid rgba(51, 65, 85, 0.7);
+  background-color: rgba(2, 6, 23, 0.85);
+  border: 1px solid rgba(51, 65, 85, 0.8);
   border-radius: 0.875rem;
-  padding: 0.85rem;
-  color: white;
+  padding: 0.85rem 1rem;
+  color: #ffffff;
+  font-size: 0.875rem;
   transition: all 0.3s ease;
+}
+.form-input::placeholder {
+  color: #475569;
 }
 .form-input:focus {
   border-color: var(--luxury-gold);
+  background-color: rgba(2, 6, 23, 0.95);
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.25);
   outline: none;
 }
 
@@ -118,13 +196,42 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
 }
 .submit-btn:hover {
-  box-shadow: 0 14px 28px -4px rgba(245, 158, 11, 0.5);
+  background: linear-gradient(135deg, #fbbf24 0%, #f97316 100%);
+  box-shadow: 0 14px 28px -4px rgba(245, 158, 11, 0.6);
+  transform: translateY(-2px);
+}
+.submit-btn:active {
+  transform: translateY(0);
 }
 
-@media (max-width: 640px) {
-  .glass-panel:hover {
-    transform: none;
-  }
+/* 8. Pulsing WhatsApp Floating Widget Aura */
+@keyframes pulseAura {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+  70% { box-shadow: 0 0 0 18px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.whatsapp-pulse-aura {
+  animation: pulseAura 2s infinite;
+}
+
+/* 9. Interactive Catalog Filter Tab States */
+.filter-btn {
+  transition: all 0.25s ease;
+  user-select: none;
+}
+.filter-btn.active {
+  background-color: var(--luxury-gold) !important;
+  color: #020617 !important;
+  font-weight: 800;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
 }
